@@ -32,17 +32,17 @@ FROM accounts;
 
 -- Questions
 
--- Question #1
+-- Question #1 Gets all users from Chicago
 SELECT * 
 FROM accounts
 WHERE city = 'chicago';
 
--- Question #2
+-- Question #2 Gets all users with usernames that contain the letter 'a'
 SELECT *
 FROM accounts
 WHERE username ILIKE '%a%';
 
--- Question #3
+-- Question #3 Gives a new balance of 10.00 for new accouts with balance of 0 and transactions attempted 0
 UPDATE accounts 
 SET account_balance = 10.00
 WHERE account_balance = 0.00 
@@ -52,29 +52,29 @@ SELECT *
 FROM accounts
 WHERE transactions_attempted = 0;
 
--- Question #4
+-- Question #4 Gets all users that have 9 or more attempted transactions
 SELECT * 
 FROM accounts
-WHERE transactions_attempted > 9;
+WHERE transactions_attempted >= 9;
 
--- Question #5
+-- Question #5 Gets usernames and account balance of top 3 highest account balances in DESC order
 SELECT username, account_balance
 FROM accounts
 ORDER BY account_balance DESC
 LIMIT 3;
 
--- Question #6
+-- Question #6 Gets usernames and account balance of 3 lowest account balances
 SELECT username, account_balance
 FROM accounts
 ORDER BY account_balance
 LIMIT 3;
 
--- Question #7
+-- Question #7 Gets all users with more than 100$ in account balance
 SELECT * 
 FROM accounts
 WHERE account_balance > 100;
 
--- Question #8
+-- Question #8 Adds a new user
 INSERT INTO accounts (username, city, transactions_completed, transactions_attempted, account_balance)
 VALUES ('philip', 'minneapolis', 4, 4, 750000.73);
 
@@ -82,7 +82,7 @@ SELECT *
 FROM accounts
 WHERE username = 'philip';
 
--- Question #9
+-- Question #9 Deletes users with fewer than 5 transactions in either miami or phoenix
 DELETE FROM accounts
 WHERE (city = 'miami' 
 OR city = 'phoenix')
